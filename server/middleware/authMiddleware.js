@@ -1,6 +1,9 @@
 import jwt from 'jsonwebtoken'
 import asyncHandler from 'express-async-handler'
 import User from '../models/userModel.js'
+import getSecretValueFromKeyVault from '../utils/azkeyvault.js';
+
+const JWT_SECRET = (await getSecretValueFromKeyVault("jwtsecret")).value;
 
 // verifies the token
 const protect = asyncHandler(async (req, res, next) => {
@@ -13,7 +16,7 @@ const protect = asyncHandler(async (req, res, next) => {
     try {
       token = req.headers.authorization.split(' ')[1]
 
-      const decoded = jwt.verify(token, process.env.JWT_SECRET)
+      const decoded = jwt.verify(token, JWT_SECRET)
 
       req.user = await User.findById(decoded.id).select('-password')
 
