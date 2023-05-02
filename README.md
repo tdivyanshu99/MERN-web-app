@@ -78,5 +78,5 @@ This project aims to develop a gadget shopping platform, where users can easily 
 6. Deployment on Azure
 
 ## Azure services used:
-1. Azure App service used to deploy the MERN Web app.
-2. Azure keyvault to store the secret keys like "jwtsecret" in the keyvault.
+1. Azure App service used to deploy the MERN Web app..
+2. Azure keyvault to store the secret keys like "jwtsecret" in the keyvault..
