@@ -1,9 +1,12 @@
 import { ClientSecretCredential } from "@azure/identity"; 
 import { SecretClient } from "@azure/keyvault-secrets";
+import dotenv from 'dotenv';
 
-const AZURE_CLIENT_ID = "47407c34-8f7c-44ed-9324-8931aae2d5a0"
-const AZURE_CLIENT_SECRET = "yzl8Q~nxqHJ0ilblET9bhDmHNaCb-ByKFIbFAaRk"
-const AZURE_TENANT_ID = "22823687-42d9-40b1-94b1-ba85a005231e"
+dotenv.config()
+
+const AZURE_CLIENT_ID = process.env.AZURE_CLIENT_ID;
+const AZURE_CLIENT_SECRET = process.env.AZURE_CLIENT_SECRET;
+const AZURE_TENANT_ID = process.env.AZURE_TENANT_ID;
 
 const credential = new ClientSecretCredential(AZURE_TENANT_ID, AZURE_CLIENT_ID, AZURE_CLIENT_SECRET);
 const keyVaultUrl = "https://gadgetkv.vault.azure.net";
